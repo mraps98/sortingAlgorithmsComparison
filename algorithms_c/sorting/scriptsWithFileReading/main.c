@@ -11,6 +11,8 @@
 #include "shaker.h"
 #include "shell.h"
 
+int isArraySorted(long[], int);
+
 int main(int argc, char* argv[]){
 	
 	/* declare variables */
@@ -124,7 +126,31 @@ int main(int argc, char* argv[]){
 	}
 	
 	printf("Time taken is %f seconds\n", cpu_time_used);
+	if(isArraySorted(data, number_of_items)){
+		printf("Validation: Array has been sorted\n");
+	}else{
+		printf("Validation: Array not sorted\n");
+	}
 	free(data);
 	
 	return 0;
+}
+
+int isArraySorted(long s[], int n) {
+  int a = 1, d = 1, i = 0;
+
+  while ((a == 1 || d == 1) && i < n - 1) {
+    if (s[i] < s[i+1])
+      d = 0;
+    else if (s[i] > s[i+1])
+      a = 0;
+    i++;
+  }
+
+  if (a == 1)
+    return 1;
+  else if (d == 1)
+    return 2;
+  else
+    return 0;
 }
