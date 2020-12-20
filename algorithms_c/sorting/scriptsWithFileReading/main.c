@@ -22,12 +22,15 @@ int main(int argc, char* argv[]){
 	char line[256];
 	size_t len = 0;
 	ssize_t read;
+	long* data_original;
 	long* data;
 	unsigned int count = 0;
 	char sort_type[20] = "bubble";
 	char number_of_items_string[10] = "1k";
 	clock_t start, end;
-	double cpu_time_used = 0;
+	double average_cpu_time_used = 0;
+	double total_cpu_time_used = 0;
+	unsigned int number_of_iterations = 1;
 	
 	if(argc > 1){	
 		if(argc > 2){
@@ -55,77 +58,116 @@ int main(int argc, char* argv[]){
 		}else{
 			number_of_items = 1000;
 		}
+		if(argc > 3){
+			number_of_iterations = atoi(argv[3]);
+		}
 	}
-	printf("Sort type = %s and number of items is %s\n", sort_type, number_of_items_string);
+	printf("Sort type = %s and number of items is %s and number of iterations is %d\n", sort_type, number_of_items_string, number_of_iterations);
+	
 	/* generate file name */
 	sprintf(file_name, "../../../generatingData/data/long/long%d.txt", number_of_items);
 	
 	fp = fopen(file_name, "r");
+	data_original = calloc(number_of_items, sizeof(long));
 	data = calloc(number_of_items, sizeof(long));
 	
+	/* Load Data from file */
 	while(fgets(line, sizeof(line), fp)){
-		data[count] = atoi(line);
+		data_original[count] = atoi(line);
 		count++;
 	}
 	
 	fclose(fp);
 
-	printf("before:\n");
-	for(int i = 0; i < number_of_items; i++){
+	// printf("before:\n");
+	// for(int i = 0; i < number_of_items; i++){
 		// printf("%ld, ", data[i]);
-	}
+	// }
 	
 	/* Sort based on type */
 	if(strcmp(sort_type, "bubble") == 0){
-		start = clock();
-		bubble_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			bubble_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "heap") == 0){
-		start = clock();
-		heap_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			heap_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "insertion") == 0){
-		start = clock();
-		insertion_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			insertion_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "merge") == 0){
-		start = clock();
-		merge_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			merge_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "quick") == 0){
-		start = clock();
-		quick_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			quick_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "selection") == 0){
-		start = clock();
-		selection_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			selection_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "shaker") == 0){
-		start = clock();
-		shaker_sort(data, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			shaker_sort(data, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "shell") == 0){
-		start = clock();
-		shell_sort(data, 0, number_of_items);
-		end = clock();
-		cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+		for(int i = 0; i < number_of_iterations; i++){
+			memcpy(data, data_original, number_of_items);
+			start = clock();
+			shell_sort(data, 0, number_of_items);
+			end = clock();
+			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
+		}
+		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else{
 		printf("incorrect sort_type entered\n");
 	}
 	
-	printf("after:\n");
-	for(int i = 0; i < number_of_items; i++){
-		// printf("%ld, ", data[i]);
-	}
+	// printf("after:\n");
+	// for(int i = 0; i < number_of_items; i++){
+	// 	printf("%ld, ", data[i]);
+	// }
 	
-	printf("Time taken is %f seconds\n", cpu_time_used);
+	printf("Total time taken for %d iterations is %f seconds\n", number_of_iterations, total_cpu_time_used);
+	printf("Average time taken for %d iterations is %f seconds\n", number_of_iterations, average_cpu_time_used);
 	if(isArraySorted(data, number_of_items)){
 		printf("Validation: Array has been sorted\n");
 	}else{
