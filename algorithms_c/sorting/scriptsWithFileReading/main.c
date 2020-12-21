@@ -86,7 +86,8 @@ int main(int argc, char* argv[]){
 	
 	/* Sort based on type */
 	if(strcmp(sort_type, "bubble") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			bubble_sort(data, 0, number_of_items);
@@ -95,7 +96,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "heap") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			heap_sort(data, 0, number_of_items);
@@ -104,7 +106,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "insertion") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			insertion_sort(data, 0, number_of_items);
@@ -113,7 +116,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "merge") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			merge_sort(data, 0, number_of_items);
@@ -122,7 +126,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "quick") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			quick_sort(data, 0, number_of_items);
@@ -131,7 +136,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "selection") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			selection_sort(data, 0, number_of_items);
@@ -140,7 +146,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "shaker") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			shaker_sort(data, number_of_items);
@@ -149,7 +156,8 @@ int main(int argc, char* argv[]){
 		}
 		average_cpu_time_used = total_cpu_time_used / number_of_iterations;
 	}else if(strcmp(sort_type, "shell") == 0){
-		for(int i = 0; i < number_of_iterations; i++){
+		int i;
+		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
 			shell_sort(data, 0, number_of_items);
