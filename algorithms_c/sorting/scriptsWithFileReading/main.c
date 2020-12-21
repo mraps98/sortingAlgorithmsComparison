@@ -90,7 +90,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			bubble_sort(data, 0, number_of_items);
+			bubble_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
@@ -100,7 +100,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			heap_sort(data, 0, number_of_items);
+			heap_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
@@ -110,7 +110,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			insertion_sort(data, 0, number_of_items);
+			insertion_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
@@ -120,7 +120,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			merge_sort(data, 0, number_of_items);
+			merge_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
@@ -130,7 +130,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			quick_sort(data, 0, number_of_items);
+			quick_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
@@ -140,7 +140,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			selection_sort(data, 0, number_of_items);
+			selection_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
@@ -160,7 +160,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			shell_sort(data, 0, number_of_items);
+			shell_sort(data, 0, number_of_items - 1);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
