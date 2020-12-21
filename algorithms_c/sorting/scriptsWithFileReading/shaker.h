@@ -2,5 +2,5 @@
 #ifndef SHAKER_H
 #define SHAKER_H
 void swap(long *a, long *b);
-void shaker_sort(long *a, long n);
+void shaker_sort(long *a, int n);
 #endif

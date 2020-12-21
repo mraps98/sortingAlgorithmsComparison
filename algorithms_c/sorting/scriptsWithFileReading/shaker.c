@@ -10,9 +10,9 @@ void swap(long *a, long *b)
     *a = *b;
     *b = temp;
 }
-void shaker_sort(long *a, long n)
+void shaker_sort(long *a, int n)
 {
-    long p, i;
+    int p, i;
     for (p = 1; p <= n / 2; p++)
     {
         for (i = p - 1; i < n - p; i++)
