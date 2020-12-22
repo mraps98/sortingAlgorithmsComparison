@@ -120,7 +120,7 @@ int main(int argc, char* argv[]){
 		for(i = 0; i < number_of_iterations; i++){
 			memcpy(data, data_original, number_of_items);
 			start = clock();
-			merge_sort(data, 0, number_of_items - 1);
+			merge_sort(data, number_of_items);
 			end = clock();
 			total_cpu_time_used += ((double) (end - start)) / CLOCKS_PER_SEC;
 		}
