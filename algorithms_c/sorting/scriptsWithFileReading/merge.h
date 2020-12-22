@@ -3,8 +3,6 @@
 #define MERGE_H
 typedef long Item;
 
-long *aux;
-
 void merge(Item a[], int l, int m, int r);
 void merge_sort(Item a[], int l, int r);
 #endif
